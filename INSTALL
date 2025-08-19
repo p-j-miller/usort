@@ -1,0 +1,30 @@
+This program requires a C99 compiler.
+There are normally no compiler warnings (or errors) when compiling these program.
+
+To compile the program under Linux try:
+ gcc -march=native -Ofast -std=c99 -Wall -o usort usort.c atof.c heapsort.c qsort.c
+ 
+ 
+ then ./usort -h to run
+ [this has been tested with gcc 9.3.0 under Ubuntu 20.04 LTS ] 
+ Note as this is a port of the BSD sort command it will be very similar to the sort command already installed.
+ 
+ Under Windows (tested with GCC 15.1.0 compiled for UCRT runtime ): 
+  gcc -march=native -Ofast -std=c99 -Wall -o nsort.exe usort.c atof.c heapsort.c qsort.c
+   
+  then usort.exe -? to run
+  
+  Note that for simple sorts nsort ( https://github.com/p-j-miller/nsort ) is significantly faster, but usort is a lot more flexible.
+  
+  There is a makefile and .dev project file created by dev-c++ which should work as long as a recent c compiler (eg GCC 15.1.0 ) is installed and setup in the dev-c++ IDE.
+  
+USE:  
+ See usort.pdf for all the options.
+ To sort in numerical order demo1M.csv (supplied and which has 1 million lines) and put the result in sorted1M.csv use:
+  usort -gv < demo1M.csv >sorted1M.csv
+  
+  The file sorted1M-ok.csv is the correct result which can be checked by using (for linux use cmp rather than comp)
+  
+	comp sorted1M.csv  sorted1M-ok.csv
+
+

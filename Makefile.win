@@ -1,0 +1,37 @@
+# Project: usort
+# Makefile created by Embarcadero Dev-C++ 6.3
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = qsort.o heapsort.o atof.o usort.o
+LINKOBJ  = qsort.o heapsort.o atof.o usort.o
+LIBS     = -L"C:/winlibs/winlibs-x86_64-posix-seh-gcc-15.1.0-mingw-w64ucrt-13.0.0-r2/mingw64/lib" -L"C:/winlibs/winlibs-x86_64-posix-seh-gcc-15.1.0-mingw-w64ucrt-13.0.0-r2/mingw64/x86_64-w64-mingw32/lib" -static-libgcc -m64
+INCS     = -I"C:/winlibs/winlibs-x86_64-posix-seh-gcc-15.1.0-mingw-w64ucrt-13.0.0-r2/mingw64/include" -I"C:/winlibs/winlibs-x86_64-posix-seh-gcc-15.1.0-mingw-w64ucrt-13.0.0-r2/mingw64/x86_64-w64-mingw32/include" -I"C:/winlibs/winlibs-x86_64-posix-seh-gcc-15.1.0-mingw-w64ucrt-13.0.0-r2/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include"
+CXXINCS  = -I"C:/winlibs/winlibs-x86_64-posix-seh-gcc-15.1.0-mingw-w64ucrt-13.0.0-r2/mingw64/include" -I"C:/winlibs/winlibs-x86_64-posix-seh-gcc-15.1.0-mingw-w64ucrt-13.0.0-r2/mingw64/x86_64-w64-mingw32/include" -I"C:/winlibs/winlibs-x86_64-posix-seh-gcc-15.1.0-mingw-w64ucrt-13.0.0-r2/mingw64/lib/gcc/x86_64-w64-mingw32/15.1.0/include"
+BIN      = usort.exe
+CXXFLAGS = $(CXXINCS) -march=nehalem -Ofast -m64 -std=c99 -Wall -Wextra
+CFLAGS   = $(INCS) -march=nehalem -Ofast -m64 -std=c99 -Wall -Wextra
+DEL      = C:\Program Files (x86)\Embarcadero\Dev-Cpp\devcpp.exe INTERNAL_DEL
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${DEL} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+qsort.o: qsort.c
+	$(CC) -c qsort.c -o qsort.o $(CFLAGS)
+
+heapsort.o: heapsort.c
+	$(CC) -c heapsort.c -o heapsort.o $(CFLAGS)
+
+atof.o: atof.c
+	$(CC) -c atof.c -o atof.o $(CFLAGS)
+
+usort.o: usort.c
+	$(CC) -c usort.c -o usort.o $(CFLAGS)
